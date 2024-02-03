@@ -5,7 +5,7 @@ import vars
 import os
 
 
-from gui import LoginPage, EmpresaPage, State, choose_download_directory
+from gui import LoginPage, EmpresaPage, State, choose_download_directory, RepeatOperationPage
 
 def operation(state, download_folder): 
      with sync_playwright() as p:
@@ -68,7 +68,7 @@ def operation(state, download_folder):
                empresa_page.show()
 
                choice = empresa_page.get_choice()
-               empresa_page.confirmar()
+               empresa_page.confirm()
 
                if choice is not None:
 
@@ -127,21 +127,33 @@ def operation(state, download_folder):
                browser.close()
 
 
-def main():
+def main():               
+     
      state = State()
      login_page = LoginPage(state)
      login_page.load_state()
      login_page.mainloop()
 
      download_folder = choose_download_directory()
+          
      if not download_folder:
           return
 
 
      if not login_page.is_closed_correctly():
-        return
+          return
      
-     operation(state, download_folder)
+     repeat_operation = True
+     
+     while repeat_operation:
+        
+        operation(state, download_folder)
+
+        repeat_page = RepeatOperationPage()
+        repeat_page.repeat_fun(operation, state, download_folder)
+        repeat_page.mainloop()
+
+        repeat_operation = repeat_page.repeat_operation
 
 
 if __name__ == "__main__":

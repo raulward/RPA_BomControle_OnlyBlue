@@ -110,12 +110,12 @@ class EmpresaPage(tk.Toplevel):
         self.dropdown_empresa = tk.OptionMenu(self, self.entry_empresa, *self.opcoes_empresas)
         self.dropdown_empresa.pack(pady=10)
 
-        self.btn_confirmar = tk.Button(self, text="Confirmar", command=self.confirmar)
+        self.btn_confirmar = tk.Button(self, text="Confirmar", command=self.confirm)
         self.btn_confirmar.pack(pady=10)
 
         self.choice = None
 
-    def confirmar(self):
+    def confirm(self):
         self.state.selected_empresa = self.entry_empresa.get()
         if self.state.selected_empresa:
             self.choice = self.opcoes_empresas.index(self.state.selected_empresa)
@@ -127,10 +127,42 @@ class EmpresaPage(tk.Toplevel):
     def show(self):
         self.wait_window()
         choice = self.get_choice()
-        self.confirmar()
+        self.confirm()
 
     def get_name_empresa(self):
         return self.state.selected_empresa
+    
+class RepeatOperationPage(tk.Tk):
+    def __init__(self):
+        super().__init__()
+
+        self.geometry("300x150")
+        self.title("Repetir Operação")
+
+        self.label_prompt = tk.Label(self, text="Deseja repetir a operação?")
+        self.label_prompt.pack(pady=10)
+
+        self.btn_sim = tk.Button(self, text="Sim", command=self.repetir_operacao)
+        self.btn_sim.pack(pady=10)
+
+        self.btn_nao = tk.Button(self, text="Não", command=self.sair)
+        self.btn_nao.pack(pady=10)
+
+        self.repeat_operation = False
+        self.is_closed = False
+
+    def repetir_operacao(self):
+        self.repeat_operation = True
+        self.is_closed = True
+        self.destroy()
+    
+    def repeat_fun(self, callback, *args):
+        return callback(*args)
+
+
+    def sair(self):
+        self.is_closed = True
+        self.destroy()
     
 def choose_download_directory():
     root = tk.Tk()
