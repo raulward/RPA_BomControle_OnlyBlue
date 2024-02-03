@@ -1,14 +1,32 @@
 import tkinter as tk
 from tkinter import filedialog
+import pickle
+import os
 
 class State:
     def __init__(self):
         self.email = None
         self.password = None
         self.selected_empresa = None
+        self.save_login_info = False
 
     def get_selected_empresa(self):
         return self.selected_empresa
+    
+    def save_state(self, file_path):
+        with open(file_path, 'wb') as file:
+            pickle.dump(self.__dict__, file)
+    
+    def load_state(self, file_path):
+        with open(file_path, 'rb') as file:
+            data = pickle.load(file)
+            self.__dict__.update(data)
+
+    def clear_state(self):
+        self.email = None
+        self.password = None
+        self.selected_empresa = None
+        self.save_login_info = False
 
 class LoginPage(tk.Tk):
     def __init__(self, state):
@@ -18,7 +36,7 @@ class LoginPage(tk.Tk):
         self.email = None
         self.password = None
 
-        self.geometry("300x200")
+        self.geometry("400x300")
         self.title("Login")
 
         self.label_email = tk.Label(self, text="Email:")
@@ -31,6 +49,11 @@ class LoginPage(tk.Tk):
         self.entry_password = tk.Entry(self, show="*")
         self.entry_password.pack(pady=10)
 
+        self.save_login_var = tk.BooleanVar()
+        self.chk_save_login = tk.Checkbutton(self, text="Salvar informações de login", variable=self.save_login_var)
+        self.chk_save_login.pack(pady=10)
+
+
         self.btn_login = tk.Button(self, text="Login", command=self.login)
         self.btn_login.pack(pady=10)
 
@@ -39,14 +62,34 @@ class LoginPage(tk.Tk):
     def login(self):
         self.state.email = self.entry_email.get()
         self.state.password = self.entry_password.get()
+        self.state.save_login_info = self.save_login_var.get()
 
         if self.state.email and self.state.password:
+            if self.state.save_login_info: 
+                self.state.save_state("login_state.pkl")
+            else:
+                self.check_and_remove_login_state_file()
             self.is_closed = True
             self.destroy()   # Fecha a janela de login
     
     def is_closed_correctly(self):
         return self.is_closed
     
+    def check_and_remove_login_state_file(self):
+        login_state_file = "login_state.pkl"
+
+        if os.path.exists(login_state_file):
+            os.remove(login_state_file)
+            print(f"Arquivo {login_state_file} removido.")
+    
+    def load_state(self):
+        try:
+            self.state.load_state("login_state.pkl")
+            self.entry_email.insert(0, self.state.email)
+            self.entry_password.insert(0, self.state.password)
+            self.save_login_var.set(self.state.save_login_info)
+        except FileNotFoundError:
+            pass  # O arquivo não existe ainda    
 
 class EmpresaPage(tk.Toplevel):
     def __init__(self, state, empresas):
@@ -54,7 +97,7 @@ class EmpresaPage(tk.Toplevel):
 
         self.state = state
 
-        self.geometry("300x200")
+        self.geometry("400x300")
         self.title("Escolha a Empresa")
 
         self.label_empresa = tk.Label(self, text="Escolha a Empresa:")

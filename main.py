@@ -130,6 +130,7 @@ def operation(state, download_folder):
 def main():
      state = State()
      login_page = LoginPage(state)
+     login_page.load_state()
      login_page.mainloop()
 
      download_folder = choose_download_directory()
