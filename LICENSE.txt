@@ -15,7 +15,7 @@ Este é um contrato legal ("Contrato") entre você, o usuário final, e OnlyBlue
    Este contrato entra em vigor na data da instalação do software e permanecerá em vigor até ser rescindido. OnlyBlue BPO Financeiro e Inteligência Financeira pode rescindir este contrato a qualquer momento, sem aviso prévio, se você violar os termos deste contrato.
 
 5. Lei Aplicável
-   Este contrato será regido e interpretado de acordo com as leis do Estado X.
+   Este contrato será regido e interpretado de acordo com as leis do Estado Brasileiro.
 
 Ao instalar ou usar o software, você concorda com os termos deste contrato.
 
