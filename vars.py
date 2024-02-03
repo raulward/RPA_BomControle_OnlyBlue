@@ -1,0 +1,13 @@
+URL_BOMCONTROLE = 'https://new.bomcontrole.com.br/'
+CSS_INPUT_EMAIL = '#inputEmail'
+CSS_BTN_EMAIL = 'btn btn-login'
+CSS_MENU_FINANCEIRO = '#menu-modulo-financeiro'
+CSS_EMPRESAS = 'bc-select-empresa'
+CSS_LISTA_EMPRESAS = 'ul.ui-select-choices-content.select2-results li[role="option"]'
+CSS_BTN_APLICAR = 'button.btn.btn-sm.aplicar-filtros.no-focus'
+CSS_BTN_LIMPAR = 'a.desmarcar-todos.ng-scope'
+CSS_BTN_EXPORTAR = 'bc-exportar-btn'
+CSS_BTN_XLS = 'a.btn.btn-success[ng-click="exportar(\'xls\')"]'
+CSS_DROPDOWN_CAIXA = 'bc-select-entidade'
+CSS_ITEM_DROPDOWN = ".ui-select-choices-row:nth-child(2)"
+CSS_DESMARCAR_TODOS = 'a.desmarcar-todos[title="Desmarcar Todos"]'

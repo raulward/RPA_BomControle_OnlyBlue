@@ -1,0 +1,25 @@
+LICENÇA DE SOFTWARE
+
+Este é um contrato legal ("Contrato") entre você, o usuário final, e OnlyBlue BPO Financeiro e Inteligência Financeira ("Licenciante"). Ao instalar ou usar o software, você concorda em ficar vinculado aos termos deste contrato.
+
+1. Concessão de Licença
+   OnlyBlue BPO Financeiro e Inteligência Financeira concede a você uma licença não exclusiva e intransferível para usar o software.
+
+2. Restrições
+   Você concorda em não: (a) sublicenciar, alugar, arrendar, emprestar ou transferir o software para terceiros; (b) modificar, descompilar, desmontar ou fazer engenharia reversa do software.
+
+3. Isenção de Responsabilidade
+   O software é fornecido "no estado em que se encontra", sem garantias de qualquer tipo, expressas ou implícitas. OnlyBlue BPO Financeiro e Inteligência Financeira não será responsável por quaisquer danos decorrentes do uso ou incapacidade de uso do software.
+
+4. Termo e Rescisão
+   Este contrato entra em vigor na data da instalação do software e permanecerá em vigor até ser rescindido. OnlyBlue BPO Financeiro e Inteligência Financeira pode rescindir este contrato a qualquer momento, sem aviso prévio, se você violar os termos deste contrato.
+
+5. Lei Aplicável
+   Este contrato será regido e interpretado de acordo com as leis do Estado X.
+
+Ao instalar ou usar o software, você concorda com os termos deste contrato.
+
+OnlyBlue BPO Financeiro e Inteligência Financeira
+
+Endereço: Q 204 Bloco B Sala 159 - Águas Claras, Brasília - DF, 71939-540
+Telefone: (61) 99186-9151
