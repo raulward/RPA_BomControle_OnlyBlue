@@ -1,5 +1,4 @@
 import tkinter as tk
-from tkinter import filedialog
 import pickle
 import os
 
@@ -132,7 +131,7 @@ class EmpresaPage(tk.Toplevel):
     def get_name_empresa(self):
         return self.state.selected_empresa
     
-class RepeatOperationPage(tk.Tk):
+class RepeatOperationPage(tk.Toplevel):
     def __init__(self):
         super().__init__()
 
@@ -142,30 +141,25 @@ class RepeatOperationPage(tk.Tk):
         self.label_prompt = tk.Label(self, text="Deseja repetir a operação?")
         self.label_prompt.pack(pady=10)
 
-        self.btn_sim = tk.Button(self, text="Sim", command=self.repetir_operacao)
+        self.btn_sim = tk.Button(self, text="Sim", command=self.confirmar_repeticao)
         self.btn_sim.pack(pady=10)
 
-        self.btn_nao = tk.Button(self, text="Não", command=self.sair)
+        self.btn_nao = tk.Button(self, text="Não", command=self.finalizar_repeticao)
         self.btn_nao.pack(pady=10)
 
         self.repeat_operation = False
         self.is_closed = False
 
-    def repetir_operacao(self):
+
+    def confirmar_repeticao(self):
         self.repeat_operation = True
-        self.is_closed = True
         self.destroy()
-    
-    def repeat_fun(self, callback, *args):
-        return callback(*args)
+        self.is_closed = True
+
+    def finalizar_repeticao(self):
+        self.repeat_operation = False
+        self.destroy()
+        self.is_closed = True
 
 
-    def sair(self):
-        self.is_closed = True
-        self.destroy()
-    
-def choose_download_directory():
-    root = tk.Tk()
-    root.withdraw()
-    folder_selected = filedialog.askdirectory(title="Selecione o diretório de downloads")
-    return folder_selected
+
